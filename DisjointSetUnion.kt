@@ -8,6 +8,7 @@ class DisjointSetUnion(private val size: Int) {
   }
 
   fun leader(son: Int): Int {
+    assert(son in 1..size)
     if (father[son] == -1) {
       return son
     }
@@ -16,6 +17,7 @@ class DisjointSetUnion(private val size: Int) {
   }
 
   fun unite(u: Int, v: Int) {
+    assert(u in 1..size && v in 1..size)
     val fu = leader(u)
     val fv = leader(v)
     if (fu != fv) {
