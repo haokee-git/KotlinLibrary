@@ -1,3 +1,5 @@
+package lib
+
 class SegmentTree(private val n: Int,
                   private val def: Int,
                   private val change: (Int, Int) -> Int,

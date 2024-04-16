@@ -1,8 +1,10 @@
+package lib
+
 import kotlin.math.*
 
 class StaticTable(private val n: Int,
-                  private val a: IntArray,
-                  private val function: (Int, Int) -> Int) {
+                  a: IntArray,
+                  function: (Int, Int) -> Int) {
   private val length = ceil(log2(n.toDouble())).toInt()
   private val lg = IntArray(n + 1)
   private val dp = Array(n + 1) { IntArray(length + 1) }

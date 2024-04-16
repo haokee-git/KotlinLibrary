@@ -1,3 +1,5 @@
+package lib
+
 import java.util.*
 
 class BinaryIndexedTree<Ty>(private val size: Int,

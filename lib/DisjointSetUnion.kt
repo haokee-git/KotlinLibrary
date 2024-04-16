@@ -1,3 +1,5 @@
+package lib
+
 import java.util.*
 
 class DisjointSetUnion(private val size: Int) {
