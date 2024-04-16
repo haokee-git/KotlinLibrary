@@ -19,7 +19,10 @@ class Graph(private val n: Int,
     forwardEdges[from].add(ForwardEdge(to, weight))
   }
 
-  operator fun get(from: Int) = forwardEdges[from]
+  operator fun get(from: Int): ArrayList<ForwardEdge> {
+    assert(from in 1..n)
+    return forwardEdges[from]
+  }
 
   fun getEdges() = edges
 
@@ -55,7 +58,8 @@ class Graph(private val n: Int,
     return dp
   }
 
-  fun dijkstra(s: Int, inf: Int): IntArray {
+  fun dijkstra(s: Int, inf: Int = 1e9.toInt()): IntArray {
+    assert(s in 1..n)
     val cmp: Comparator<ForwardEdge> = compareBy { it.weight }
     val q = PriorityQueue(cmp)
     val f = BooleanArray(n + 1)
@@ -77,7 +81,8 @@ class Graph(private val n: Int,
     return d
   }
 
-  fun spfa(s: Int, inf: Int): IntArray {
+  fun spfa(s: Int, inf: Int = 1e9.toInt()): IntArray {
+    assert(s in 1..n)
     val q: Queue<Int> = LinkedList()
     val f = BooleanArray(n + 1)
     val d = IntArray(n + 1) { inf }
