@@ -1,7 +1,6 @@
 package lib
 
 class SegmentTree(private val n: Int,
-                  private val def: Int,
                   private val change: (Int, Int) -> Int,
                   private val result: (Int, Int) -> Int) {
   private val tr = IntArray(n * 4 + 5)
@@ -26,14 +25,13 @@ class SegmentTree(private val n: Int,
       return tr[p]
     }
     val m = (l + r) / 2
-    var res = def
-    if (s <= m) {
-      res = result(res, getResult(s, t, l, m, 2 * p))
+    return if (m in s..<t) {
+      result(getResult(s, t, l, m, 2 * p), getResult(s, t, m + 1, r, 2 * p + 1))
+    } else if (s <= m) {
+      getResult(s, t, l, m, 2 * p)
+    } else {
+      getResult(s, t, m + 1, r, 2 * p + 1)
     }
-    if (m < t) {
-      res = result(res, getResult(s, t, m + 1, r, 2 * p + 1))
-    }
-    return res
   }
 
   fun modify(x: Int, y: Int) {

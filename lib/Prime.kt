@@ -2,6 +2,7 @@ package lib
 
 class Prime {
   companion object {
+    @JvmStatic
     fun isPrime(x: Long): Boolean {
       if (x <= 1L) {
         return false
@@ -16,6 +17,7 @@ class Prime {
       return true
     }
 
+    @JvmStatic
     fun getPrime(n: Int): ArrayList<Int> {
       val p = ArrayList<Int>()
       val f = Array(n + 1) { false }

@@ -26,6 +26,7 @@ class Graph(private val n: Int,
 
   fun getEdges() = edges
 
+  @JvmOverloads
   fun kruskal(cmp: Comparator<Edge> = compareBy { it.weight }): Int {
     val e = edges
     val st = DisjointSetUnion(n + 1)
@@ -40,6 +41,7 @@ class Graph(private val n: Int,
     return ans
   }
 
+  @JvmOverloads
   fun floyd(inf: Int = 1e9.toInt()): Array<IntArray> {
     val dp = Array(n + 1) { IntArray(n + 1) { inf } }
     for (i in 1..n) {
@@ -58,6 +60,7 @@ class Graph(private val n: Int,
     return dp
   }
 
+  @JvmOverloads
   fun dijkstra(s: Int, inf: Int = 1e9.toInt()): IntArray {
     assert(s in 1..n)
     val cmp: Comparator<ForwardEdge> = compareBy { it.weight }
@@ -81,6 +84,7 @@ class Graph(private val n: Int,
     return d
   }
 
+  @JvmOverloads
   fun spfa(s: Int, inf: Int = 1e9.toInt()): IntArray {
     assert(s in 1..n)
     val q: Queue<Int> = LinkedList()
